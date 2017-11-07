@@ -1,0 +1,235 @@
+<br/><br/> <br/><br/> <br/><br/>
+
+<section class="mbr-section mbr-section-small" id="form1-8" data-rv-view="8" style="background-color: rgb(251, 242, 190); padding-top: 6rem; padding-bottom: 6rem;">
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2" data-form-type="formoid">
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Gstin uin:</strong>
+  <%= @sale.GSTIN_UIN %>
+</p>
+
+<p>
+  <strong>Email id:</strong>
+  <%= @sale.EMAIL_ID %>
+</p>
+
+<p>
+  <strong>Cin:</strong>
+  <%= @sale.CIN %>
+</p>
+
+<p>
+  <strong>Telephone no:</strong>
+  <%= @sale.TELEPHONE_NO %>
+</p>
+
+<p>
+  <strong>Pan:</strong>
+  <%= @sale.PAN %>
+</p>
+
+<p>
+  <strong>Fax:</strong>
+  <%= @sale.FAX %>
+</p>
+
+<p>
+  <strong>Reverse charge:</strong>
+  <%= @sale.REVERSE_CHARGE %>
+</p>
+
+<p>
+  <strong>Transportation mode:</strong>
+  <%= @sale.TRANSPORTATION_MODE %>
+</p>
+
+<p>
+  <strong>Invoice no:</strong>
+  <%= @sale.INVOICE_NO %>
+</p>
+
+<p>
+  <strong>Vehicle no:</strong>
+  <%= @sale.VEHICLE_NO %>
+</p>
+
+<p>
+  <strong>Invoice date:</strong>
+  <%= @sale.INVOICE_DATE %>
+</p>
+
+<p>
+  <strong>Date of supply:</strong>
+  <%= @sale.DATE_OF_SUPPLY %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @sale.STATE %>
+</p>
+
+<p>
+  <strong>Place of supply:</strong>
+  <%= @sale.PLACE_OF_SUPPLY %>
+</p>
+
+<p>
+  <strong>State code:</strong>
+  <%= @sale.STATE_CODE %>
+</p>
+
+<p>
+  <strong>Buyer name:</strong>
+  <%= @sale.BUYER_NAME %>
+</p>
+
+<p>
+  <strong>Buyer address:</strong>
+  <%= @sale.BUYER_ADDRESS %>
+</p>
+
+<p>
+  <strong>Buyer gstin uin:</strong>
+  <%= @sale.BUYER_GSTIN_UIN %>
+</p>
+
+<p>
+  <strong>Buyer cin:</strong>
+  <%= @sale.BUYER_CIN %>
+</p>
+
+<p>
+  <strong>Buyer state:</strong>
+  <%= @sale.BUYER_STATE %>
+</p>
+
+<p>
+  <strong>Buyer state code:</strong>
+  <%= @sale.BUYER_STATE_CODE %>
+</p>
+
+<p>
+  <strong>Consignee name:</strong>
+  <%= @sale.CONSIGNEE_NAME %>
+</p>
+
+<p>
+  <strong>Consignee address:</strong>
+  <%= @sale.CONSIGNEE_ADDRESS %>
+</p>
+
+<p>
+  <strong>Consignee gstin uin:</strong>
+  <%= @sale.CONSIGNEE_GSTIN_UIN %>
+</p>
+
+<p>
+  <strong>Consignee cin:</strong>
+  <%= @sale.CONSIGNEE_CIN %>
+</p>
+
+<p>
+  <strong>Consignee state:</strong>
+  <%= @sale.CONSIGNEE_STATE %>
+</p>
+
+<p>
+  <strong>Consignee state code:</strong>
+  <%= @sale.CONSIGNEE_STATE_CODE %>
+</p>
+
+<p>
+  <strong>Application no for removal of goods:</strong>
+  <%= @sale.APPLICATION_NO_FOR_REMOVAL_OF_GOODS %>
+</p>
+
+<p>
+  <strong>Application date for removal of goods:</strong>
+  <%= @sale.APPLICATION_DATE_FOR_REMOVAL_OF_GOODS %>
+</p>
+
+<p>Export Details</p>
+<% @sale.exportsales.each do |exportsale| %>
+  <p>
+    <b>NAME_OF_GOODS_SERVICES:</b>
+    <%= exportsale.NAME_OF_GOODS_SERVICES %>
+  </p>
+
+  <p>
+    <b>HSNC_ACS:</b>
+    <%= exportsale.HSNC_ACS %>
+  </p>
+  <p>
+    <b>UQM:</b>
+    <%= exportsale.UQM %>
+  </p>
+
+  <p>
+    <b>QTY:</b>
+    <%= exportsale.QTY %>
+  </p>
+  <p>
+    <b>RATE_P_U:</b>
+    <%= exportsale.RATE_P_U %>
+  </p>
+
+  <p>
+    <b>AMOUNT:</b>
+    <%= exportsale.AMOUNT %>
+  </p>
+  <p>
+    <b>LESS_DISCOUNT_ABATEMENT:</b>
+    <%= exportsale.LESS_DISCOUNT_ABATEMENT %>
+  </p>
+
+  <p>
+    <b>TAXABLE_AMOUNT:</b>
+    <%= exportsale.TAXABLE_AMOUNT %>
+  </p>
+  <p>
+    <b>CGST_RATE_OF_TAX:</b>
+    <%= exportsale.CGST_RATE_OF_TAX %>
+  </p>
+
+  <p>
+    <b>CGST_AMT:</b>
+    <%= exportsale.CGST_AMT %>
+  </p>
+  <p>
+    <b>SGST_RATE_OF_TAX:</b>
+    <%= exportsale.SGST_RATE_OF_TAX %>
+  </p>
+
+  <p>
+    <b>SGST_AMT:</b>
+    <%= exportsale.SGST_AMT %>
+  </p>
+
+   <p>
+    <b>IGST_RATE_OF_TAX:</b>
+    <%= exportsale.IGST_RATE_OF_TAX %>
+  </p>
+  <p>
+    <b>IGST_AMT:</b>
+    <%= exportsale.IGST_AMT %>
+  </p>
+
+  <p>
+    <b>TOTAL_AMOUNT:</b>
+    <%= exportsale.TOTAL_AMOUNT %>
+  </p>
+<% end %>
+<%= image_tag @sale.photo.url(:thumb) %>
+
+<%= link_to 'Edit', edit_sale_path(@sale) %> |
+<%= link_to 'Back', sales_path %>
+
+            </div>
+        </div>
+    </div>
+</section>

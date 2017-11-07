@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CapitalClicks</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  	<nav class="navbar navbar-light mbr-navbar navbar-fixed-top" id="menu-0" data-rv-view="0" style="background-color: rgb(154, 230, 182);">
+    <div class="container">
+        <button class="navbar-toggler pull-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+            <div class="hamburger-icon"></div>
+        </button>
+
+        <div class="clearfix"></div>
+        <div class="collapse navbar-toggleable-sm" id="exCollapsingNavbar2">
+            <span class="navbar-logo"><a href="/">            
+            	<%= image_tag "screen-shot-2017-07-13-at-10-120x128.png" %></a></span>
+            <ul class="nav navbar-nav pull-xs-right"><li class="nav-item"><a class="btn btn-secondary-outline" href="clientIndex.html"><span class="mbri-login mbr-iconfont mbr-iconfont-btn-parent"></span>LOGIN</a></li></ul>
+
+            <ul class="nav navbar-nav pull-xs-right"><li class="nav-item"><a class="nav-link text-black" href="index.html#header1-1">Home</a></li><li class="nav-item"><a class="nav-link text-black" href="index.html#header1-6">About</a></li><li class="nav-item"><a class="nav-link text-black" href="index.html#form1-8">Contact</a></li></ul>
+        </div>
+    </div>
+</nav>
+    <%= yield %>
+  </body>
+</html>

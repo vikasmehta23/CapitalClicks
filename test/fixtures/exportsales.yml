@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sale: one
+  NAME_OF_GOODS_SERVICES: MyString
+  HSNC_ACS: MyString
+  UQM: MyString
+  QTY: MyString
+  RATE_P_U: MyString
+  AMOUNT: MyString
+  LESS_DISCOUNT_ABATEMENT: MyString
+  TAXABLE_AMOUNT: MyString
+  CGST_RATE_OF_TAX: MyString
+  CGST_AMT: MyString
+  SGST_RATE_OF_TAX: MyString
+  SGST_AMT: MyString
+  IGST_RATE_OF_TAX: MyString
+  IGST_AMT: MyString
+  TOTAL_AMOUNT: MyString
+
+two:
+  sale: two
+  NAME_OF_GOODS_SERVICES: MyString
+  HSNC_ACS: MyString
+  UQM: MyString
+  QTY: MyString
+  RATE_P_U: MyString
+  AMOUNT: MyString
+  LESS_DISCOUNT_ABATEMENT: MyString
+  TAXABLE_AMOUNT: MyString
+  CGST_RATE_OF_TAX: MyString
+  CGST_AMT: MyString
+  SGST_RATE_OF_TAX: MyString
+  SGST_AMT: MyString
+  IGST_RATE_OF_TAX: MyString
+  IGST_AMT: MyString
+  TOTAL_AMOUNT: MyString
