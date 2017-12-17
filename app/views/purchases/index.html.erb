@@ -1,0 +1,51 @@
+<br/><br/> <br/><br/> <br/><br/>
+<p id="notice"><%= notice %></p>
+
+<section class="mbr-section mbr-section-small" id="form1-8" data-rv-view="8" style="background-color: rgb(251, 242, 190); padding-top: 6rem; padding-bottom: 6rem;">
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2" data-form-type="formoid">
+
+
+<h2 class="mbr-section-title display-3 text-xs-center">Purchases</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th width="200px">Gstin uin</th>
+      <th width="200px">Email id      </th>
+      <th width="200px">Telephone no  </th>
+      <th width="200px">Pan           </th>
+      <th width="200px">Invoice no    </th>
+      <th width="300px">Invoice date  </th>
+      <th width="300px">User  </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @purchases.each do |purchase| %>
+      <tr>
+        <td width="200px"><%= purchase.GSTIN_UIN %></td>
+        <td width="200px"><%= purchase.EMAIL_ID %></td>
+        <td width="200px"><%= purchase.TELEPHONE_NO %></td>
+        <td width="200px"><%= purchase.PAN %></td>
+        <td width="200px"><%= purchase.INVOICE_NO %></td>
+        <td width="300px"><%= purchase.INVOICE_DATE %></td>
+        <td width="300px"><%= current_user.email %></td>
+        <td width="200px"><%= link_to 'Show', purchase %></td>
+        <td width="200px"><%= link_to 'Edit', edit_purchase_path(purchase) %></td>
+        <td width="200px"><%= link_to 'Destroy', purchase, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+ <div class="mbr-buttons--center"><a class="btn btn-lg btn-black-outline btn-black" href="purchases/new"><span class="mbri-login mbr-iconfont mbr-iconfont-btn"></span>New Purchase</a> </div>
+
+             </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CapitalClicks</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  	<nav class="navbar navbar-light mbr-navbar navbar-fixed-top" id="menu-0" data-rv-view="0" style="background-color: rgb(154, 230, 182);">
+    <div class="container">
+        <button class="navbar-toggler pull-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+            <div class="hamburger-icon"></div>
+        </button>
+
+        <div class="clearfix"></div>
+        <div class="collapse navbar-toggleable-sm" id="exCollapsingNavbar2">
+          <ul class="nav navbar-nav pull-xs-right">
+            <% if current_user %>
+             <li class="nav-item"><a href='/'>Home</a></li>
+            <li class="nav-item"> Logged in as <%= current_user.email %>.</li> 
+            <li class="nav-item"><%= link_to "Log Out", log_out_path %></li>           
+          <% else %>
+             <li class="nav-item"><a href='/'>Home</a></li>
+             <li class="nav-item">About</li>
+             <li class="nav-item">Contact</li>
+            <li class="nav-item"><%= link_to "Sign Up", sign_up_path %></li>
+            <li class="nav-item"><%= link_to "Log In", log_in_path %></li> 
+          <% end %>
+          </ul>
+        </div>
+    </div>
+</nav>
+    <%= yield %>
+  </body>
+</html>
