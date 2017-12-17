@@ -12,8 +12,8 @@ get "sign_up" => "users#new", :as => "sign_up"
 root :to => "users#new"
 resources :users
 resources :sessions
-  
-  resources :purchases do
+
+resources :purchases do
   	resources :exports
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
