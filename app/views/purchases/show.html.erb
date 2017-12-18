@@ -153,6 +153,11 @@
   <%= @purchase.APPLICATION_DATE_FOR_REMOVAL_OF_GOODS %>
 </p>
 
+<p>
+  <strong>Comments:</strong>
+  <%= @purchase.comment %>
+</p>
+
 <p>Export Details</p>
 <% @purchase.exports.each do |export| %>
   <p>

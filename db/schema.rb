@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171217203111) do
+ActiveRecord::Schema.define(version: 20171218125108) do
+
   create_table "exports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "purchase_id"
     t.string "NAME_OF_GOODS_SERVICES"
@@ -92,6 +93,7 @@ ActiveRecord::Schema.define(version: 20171217203111) do
     t.integer "photo_file_size"
     t.datetime "photo_updated_at"
     t.bigint "user_id"
+    t.string "comment"
     t.index ["user_id"], name: "index_purchases_on_user_id"
   end
 
@@ -132,6 +134,7 @@ ActiveRecord::Schema.define(version: 20171217203111) do
     t.integer "photo_file_size"
     t.datetime "photo_updated_at"
     t.bigint "user_id"
+    t.string "comment"
     t.index ["user_id"], name: "index_sales_on_user_id"
   end
 

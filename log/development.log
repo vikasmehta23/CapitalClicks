@@ -10406,3 +10406,886 @@ Processing by SalesController#new as HTML
 Completed 200 OK in 266ms (Views: 203.4ms | ActiveRecord: 8.6ms)
 
 
+  [1m[35m (10.6ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK(6077710640167966695, 0)[0m
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to AddCommentToPurchases (20171218125059)
+  [1m[35m (42.4ms)[0m  [1m[35mALTER TABLE `purchases` ADD `comment` varchar(255)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20171218125059')[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddCommentToSales (20171218125108)
+  [1m[35m (17.5ms)[0m  [1m[35mALTER TABLE `sales` ADD `comment` varchar(255)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20171218125108')[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.5ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK(6077710640167966695)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/" for 127.0.0.1 at 2017-12-18 18:25:29 +0530
+  [1m[35m (0.3ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 1050ms (Views: 1035.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/log_in" for 127.0.0.1 at 2017-12-18 18:25:33 +0530
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 135ms (Views: 131.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2017-12-18 18:25:39 +0530
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EqY3EuBY9lXm27l91M/pP17Qrd8HwXMkOvRPc1PzySVmVHsaNCPvtuZo0p3gruyZFIyTtDrrm2LtrpbfMjyS/w==", "email"=>"a@a.com", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'a@a.com' LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 95ms (ActiveRecord: 4.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-18 18:25:39 +0530
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  Rendered welcome/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 137ms (Views: 134.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/purchases/new" for 127.0.0.1 at 2017-12-18 18:25:42 +0530
+Processing by PurchasesController#new as HTML
+  Rendering purchases/new.html.erb within layouts/application
+  Rendered purchases/_form.html.erb (45.9ms)
+  Rendered purchases/new.html.erb within layouts/application (48.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 346ms (Views: 194.5ms | ActiveRecord: 7.6ms)
+
+
+Started POST "/purchases" for 127.0.0.1 at 2017-12-18 18:25:57 +0530
+Processing by PurchasesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8V0wX2RU9LgffHnHp5hY7CICC/xAW+bVte7ertHqXGFzkDCdlJs3jkG9diDP0NOroQAgi4G7rfR+afyLgKTS1g==", "purchase"=>{"GSTIN_UIN"=>"Hiii", "EMAIL_ID"=>"", "CIN"=>"", "TELEPHONE_NO"=>"", "PAN"=>"", "FAX"=>"", "REVERSE_CHARGE"=>"", "TRANSPORTATION_MODE"=>"", "INVOICE_NO"=>"", "VEHICLE_NO"=>"", "INVOICE_DATE(1i)"=>"2017", "INVOICE_DATE(2i)"=>"12", "INVOICE_DATE(3i)"=>"18", "INVOICE_DATE(4i)"=>"12", "INVOICE_DATE(5i)"=>"55", "DATE_OF_SUPPLY(1i)"=>"2017", "DATE_OF_SUPPLY(2i)"=>"12", "DATE_OF_SUPPLY(3i)"=>"18", "DATE_OF_SUPPLY(4i)"=>"12", "DATE_OF_SUPPLY(5i)"=>"55", "STATE"=>"", "PLACE_OF_SUPPLY"=>"", "STATE_CODE"=>"", "BUYER_NAME"=>"", "BUYER_ADDRESS"=>"", "BUYER_GSTIN_UIN"=>"", "BUYER_CIN"=>"", "BUYER_STATE"=>"", "BUYER_STATE_CODE"=>"", "CONSIGNEE_NAME"=>"", "CONSIGNEE_ADDRESS"=>"", "CONSIGNEE_GSTIN_UIN"=>"", "CONSIGNEE_CIN"=>"", "CONSIGNEE_STATE"=>"", "CONSIGNEE_STATE_CODE"=>"", "APPLICATION_NO_FOR_REMOVAL_OF_GOODS"=>"", "APPLICATION_DATE_FOR_REMOVAL_OF_GOODS(1i)"=>"2017", "APPLICATION_DATE_FOR_REMOVAL_OF_GOODS(2i)"=>"12", "APPLICATION_DATE_FOR_REMOVAL_OF_GOODS(3i)"=>"18", "APPLICATION_DATE_FOR_REMOVAL_OF_GOODS(4i)"=>"12", "APPLICATION_DATE_FOR_REMOVAL_OF_GOODS(5i)"=>"55", "comment"=>"ABC", "exports_attributes"=>{"0"=>{"NAME_OF_GOODS_SERVICES"=>"", "HSNC_ACS"=>"", "UQM"=>"", "QTY"=>"", "RATE_P_U"=>"", "AMOUNT"=>"", "LESS_DISCOUNT_ABATEMENT"=>"", "TAXABLE_AMOUNT"=>"", "CGST_RATE_OF_TAX"=>"", "CGST_AMT"=>"", "SGST_RATE_OF_TAX"=>"", "SGST_AMT"=>"", "IGST_RATE_OF_TAX"=>"", "IGST_AMT"=>"", "TOTAL_AMOUNT"=>"", "_destroy"=>"false"}}}, "commit"=>"Create Purchase"}
+Unpermitted parameter: :comment
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (2.1ms)[0m  [1m[32mINSERT INTO `purchases` (`GSTIN_UIN`, `EMAIL_ID`, `CIN`, `TELEPHONE_NO`, `PAN`, `FAX`, `REVERSE_CHARGE`, `TRANSPORTATION_MODE`, `INVOICE_NO`, `VEHICLE_NO`, `INVOICE_DATE`, `DATE_OF_SUPPLY`, `STATE`, `PLACE_OF_SUPPLY`, `STATE_CODE`, `BUYER_NAME`, `BUYER_ADDRESS`, `BUYER_GSTIN_UIN`, `BUYER_CIN`, `BUYER_STATE`, `BUYER_STATE_CODE`, `CONSIGNEE_NAME`, `CONSIGNEE_ADDRESS`, `CONSIGNEE_GSTIN_UIN`, `CONSIGNEE_CIN`, `CONSIGNEE_STATE`, `CONSIGNEE_STATE_CODE`, `APPLICATION_NO_FOR_REMOVAL_OF_GOODS`, `APPLICATION_DATE_FOR_REMOVAL_OF_GOODS`, `created_at`, `updated_at`, `user_id`) VALUES ('Hiii', '', '', '', '', '', '', '', '', '', '2017-12-18 12:55:00', '2017-12-18 12:55:00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2017-12-18 12:55:00', '2017-12-18 12:55:57', '2017-12-18 12:55:57', 1)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `exports` (`purchase_id`, `NAME_OF_GOODS_SERVICES`, `HSNC_ACS`, `UQM`, `QTY`, `RATE_P_U`, `AMOUNT`, `LESS_DISCOUNT_ABATEMENT`, `TAXABLE_AMOUNT`, `CGST_RATE_OF_TAX`, `CGST_AMT`, `SGST_RATE_OF_TAX`, `SGST_AMT`, `IGST_RATE_OF_TAX`, `IGST_AMT`, `TOTAL_AMOUNT`, `created_at`, `updated_at`) VALUES (15, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2017-12-18 12:55:57', '2017-12-18 12:55:57')[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/purchases/15
+Completed 302 Found in 22ms (ActiveRecord: 4.4ms)
+
+
+Started GET "/purchases/15" for 127.0.0.1 at 2017-12-18 18:25:57 +0530
+Processing by PurchasesController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mPurchase Load (0.5ms)[0m  [1m[34mSELECT  `purchases`.* FROM `purchases` WHERE `purchases`.`id` = 15 LIMIT 1[0m
+  Rendering purchases/show.html.erb within layouts/application
+  [1m[36mExport Load (2.3ms)[0m  [1m[34mSELECT `exports`.* FROM `exports` WHERE `exports`.`purchase_id` = 15[0m
+  Rendered purchases/show.html.erb within layouts/application (7.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 179ms (Views: 170.3ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/photos/thumb/missing.png" for 127.0.0.1 at 2017-12-18 18:25:57 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/photos/thumb/missing.png"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/purchases/15/edit" for 127.0.0.1 at 2017-12-18 18:26:06 +0530
+Processing by PurchasesController#edit as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mPurchase Load (0.4ms)[0m  [1m[34mSELECT  `purchases`.* FROM `purchases` WHERE `purchases`.`id` = 15 LIMIT 1[0m
+  Rendering purchases/edit.html.erb within layouts/application
+  [1m[36mExport Load (0.3ms)[0m  [1m[34mSELECT `exports`.* FROM `exports` WHERE `exports`.`purchase_id` = 15[0m
+  Rendered purchases/_form.html.erb (17.1ms)
+  Rendered purchases/edit.html.erb within layouts/application (19.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 204ms (Views: 188.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/photos/thumb/missing.png" for 127.0.0.1 at 2017-12-18 18:26:06 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/photos/thumb/missing.png"):
+Started GET "/photos/original/missing.png" for 127.0.0.1 at 2017-12-18 18:26:06 +0530
+  
+  
+ActionController::RoutingError (No route matches [GET] "/photos/original/missing.png"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/photos/thumb/missing.png" for 127.0.0.1 at 2017-12-18 18:27:25 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/photos/thumb/missing.png"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/photos/original/missing.png" for 127.0.0.1 at 2017-12-18 18:27:25 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/photos/original/missing.png"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/purchases/15" for 127.0.0.1 at 2017-12-18 18:27:27 +0530
+Processing by PurchasesController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mPurchase Load (0.3ms)[0m  [1m[34mSELECT  `purchases`.* FROM `purchases` WHERE `purchases`.`id` = 15 LIMIT 1[0m
+  Rendering purchases/show.html.erb within layouts/application
+  [1m[36mExport Load (0.4ms)[0m  [1m[34mSELECT `exports`.* FROM `exports` WHERE `exports`.`purchase_id` = 15[0m
+  Rendered purchases/show.html.erb within layouts/application (4.1ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 157ms (Views: 153.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/photos/thumb/missing.png" for 127.0.0.1 at 2017-12-18 18:27:27 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/photos/thumb/missing.png"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/purchases/15/edit" for 127.0.0.1 at 2017-12-18 18:30:37 +0530
+Processing by PurchasesController#edit as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mPurchase Load (0.3ms)[0m  [1m[34mSELECT  `purchases`.* FROM `purchases` WHERE `purchases`.`id` = 15 LIMIT 1[0m
+  Rendering purchases/edit.html.erb within layouts/application
+  [1m[36mExport Load (0.2ms)[0m  [1m[34mSELECT `exports`.* FROM `exports` WHERE `exports`.`purchase_id` = 15[0m
+  Rendered purchases/_form.html.erb (39.3ms)
+  Rendered purchases/edit.html.erb within layouts/application (41.1ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 213ms (Views: 168.0ms | ActiveRecord: 8.3ms)
+
+
+Started GET "/photos/thumb/missing.png" for 127.0.0.1 at 2017-12-18 18:30:38 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/photos/thumb/missing.png"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/photos/original/missing.png" for 127.0.0.1 at 2017-12-18 18:30:38 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/photos/original/missing.png"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started PATCH "/purchases/15" for 127.0.0.1 at 2017-12-18 18:30:44 +0530
+Processing by PurchasesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"O5LXsjS0MDrg+EUTo+2SfXYJ3TLK5/thWLt/ataZozHJimTHHBl/Zm/+P8KSfggmmjKjnvHaEqfhn0jndv/apg==", "purchase"=>{"GSTIN_UIN"=>"Hiii", "EMAIL_ID"=>"", "CIN"=>"", "TELEPHONE_NO"=>"", "PAN"=>"", "FAX"=>"", "REVERSE_CHARGE"=>"", "TRANSPORTATION_MODE"=>"", "INVOICE_NO"=>"", "VEHICLE_NO"=>"", "INVOICE_DATE(1i)"=>"2017", "INVOICE_DATE(2i)"=>"12", "INVOICE_DATE(3i)"=>"18", "INVOICE_DATE(4i)"=>"12", "INVOICE_DATE(5i)"=>"55", "DATE_OF_SUPPLY(1i)"=>"2017", "DATE_OF_SUPPLY(2i)"=>"12", "DATE_OF_SUPPLY(3i)"=>"18", "DATE_OF_SUPPLY(4i)"=>"12", "DATE_OF_SUPPLY(5i)"=>"55", "STATE"=>"", "PLACE_OF_SUPPLY"=>"", "STATE_CODE"=>"", "BUYER_NAME"=>"", "BUYER_ADDRESS"=>"", "BUYER_GSTIN_UIN"=>"", "BUYER_CIN"=>"", "BUYER_STATE"=>"", "BUYER_STATE_CODE"=>"", "CONSIGNEE_NAME"=>"", "CONSIGNEE_ADDRESS"=>"", "CONSIGNEE_GSTIN_UIN"=>"", "CONSIGNEE_CIN"=>"", "CONSIGNEE_STATE"=>"", "CONSIGNEE_STATE_CODE"=>"", "APPLICATION_NO_FOR_REMOVAL_OF_GOODS"=>"", "APPLICATION_DATE_FOR_REMOVAL_OF_GOODS(1i)"=>"2017", "APPLICATION_DATE_FOR_REMOVAL_OF_GOODS(2i)"=>"12", "APPLICATION_DATE_FOR_REMOVAL_OF_GOODS(3i)"=>"18", "APPLICATION_DATE_FOR_REMOVAL_OF_GOODS(4i)"=>"12", "APPLICATION_DATE_FOR_REMOVAL_OF_GOODS(5i)"=>"55", "comment"=>"ABC", "exports_attributes"=>{"0"=>{"NAME_OF_GOODS_SERVICES"=>"", "HSNC_ACS"=>"", "UQM"=>"", "QTY"=>"", "RATE_P_U"=>"", "AMOUNT"=>"", "LESS_DISCOUNT_ABATEMENT"=>"", "TAXABLE_AMOUNT"=>"", "CGST_RATE_OF_TAX"=>"", "CGST_AMT"=>"", "SGST_RATE_OF_TAX"=>"", "SGST_AMT"=>"", "IGST_RATE_OF_TAX"=>"", "IGST_AMT"=>"", "TOTAL_AMOUNT"=>"", "_destroy"=>"false", "id"=>"1"}}}, "commit"=>"Update Purchase", "id"=>"15"}
+  [1m[36mPurchase Load (0.5ms)[0m  [1m[34mSELECT  `purchases`.* FROM `purchases` WHERE `purchases`.`id` = 15 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mExport Load (0.4ms)[0m  [1m[34mSELECT `exports`.* FROM `exports` WHERE `exports`.`purchase_id` = 15 AND `exports`.`id` = 1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[33mUPDATE `purchases` SET `comment` = 'ABC', `updated_at` = '2017-12-18 13:00:44' WHERE `purchases`.`id` = 15[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/purchases/15
+Completed 302 Found in 22ms (ActiveRecord: 3.7ms)
+
+
+Started GET "/purchases/15" for 127.0.0.1 at 2017-12-18 18:30:44 +0530
+Processing by PurchasesController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mPurchase Load (0.2ms)[0m  [1m[34mSELECT  `purchases`.* FROM `purchases` WHERE `purchases`.`id` = 15 LIMIT 1[0m
+  Rendering purchases/show.html.erb within layouts/application
+  [1m[36mExport Load (1.0ms)[0m  [1m[34mSELECT `exports`.* FROM `exports` WHERE `exports`.`purchase_id` = 15[0m
+  Rendered purchases/show.html.erb within layouts/application (8.2ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 154ms (Views: 150.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/photos/thumb/missing.png" for 127.0.0.1 at 2017-12-18 18:30:44 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/photos/thumb/missing.png"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/purchases" for 127.0.0.1 at 2017-12-18 18:30:51 +0530
+Processing by PurchasesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  Rendering purchases/index.html.erb within layouts/application
+  [1m[36mPurchase Load (0.6ms)[0m  [1m[34mSELECT `purchases`.* FROM `purchases` WHERE `purchases`.`user_id` = 1[0m
+  Rendered purchases/index.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 218ms (Views: 210.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/photos/thumb/missing.png" for 127.0.0.1 at 2017-12-18 18:30:51 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/photos/thumb/missing.png"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/purchases/new" for 127.0.0.1 at 2017-12-18 18:30:52 +0530
+Processing by PurchasesController#new as HTML
+  Rendering purchases/new.html.erb within layouts/application
+  Rendered purchases/_form.html.erb (22.7ms)
+  Rendered purchases/new.html.erb within layouts/application (29.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 194ms (Views: 189.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/purchases" for 127.0.0.1 at 2017-12-18 18:31:03 +0530
+Processing by PurchasesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+TSN/pv3/twTuFD7urKg1t14E4G6ESnQf+Q0+cwTmJ97+Y08azg96k15XxzS+iuRXno49nvxYvG0YxbcnV0WKA==", "purchase"=>{"GSTIN_UIN"=>"XYZ", "EMAIL_ID"=>"", "CIN"=>"", "TELEPHONE_NO"=>"", "PAN"=>"", "FAX"=>"", "REVERSE_CHARGE"=>"", "TRANSPORTATION_MODE"=>"", "INVOICE_NO"=>"", "VEHICLE_NO"=>"", "INVOICE_DATE(1i)"=>"2017", "INVOICE_DATE(2i)"=>"12", "INVOICE_DATE(3i)"=>"18", "INVOICE_DATE(4i)"=>"13", "INVOICE_DATE(5i)"=>"00", "DATE_OF_SUPPLY(1i)"=>"2017", "DATE_OF_SUPPLY(2i)"=>"12", "DATE_OF_SUPPLY(3i)"=>"18", "DATE_OF_SUPPLY(4i)"=>"13", "DATE_OF_SUPPLY(5i)"=>"00", "STATE"=>"", "PLACE_OF_SUPPLY"=>"", "STATE_CODE"=>"", "BUYER_NAME"=>"", "BUYER_ADDRESS"=>"", "BUYER_GSTIN_UIN"=>"", "BUYER_CIN"=>"", "BUYER_STATE"=>"", "BUYER_STATE_CODE"=>"", "CONSIGNEE_NAME"=>"", "CONSIGNEE_ADDRESS"=>"", "CONSIGNEE_GSTIN_UIN"=>"", "CONSIGNEE_CIN"=>"", "CONSIGNEE_STATE"=>"", "CONSIGNEE_STATE_CODE"=>"", "APPLICATION_NO_FOR_REMOVAL_OF_GOODS"=>"", "APPLICATION_DATE_FOR_REMOVAL_OF_GOODS(1i)"=>"2017", "APPLICATION_DATE_FOR_REMOVAL_OF_GOODS(2i)"=>"12", "APPLICATION_DATE_FOR_REMOVAL_OF_GOODS(3i)"=>"18", "APPLICATION_DATE_FOR_REMOVAL_OF_GOODS(4i)"=>"13", "APPLICATION_DATE_FOR_REMOVAL_OF_GOODS(5i)"=>"00", "comment"=>"XYZ", "exports_attributes"=>{"0"=>{"NAME_OF_GOODS_SERVICES"=>"", "HSNC_ACS"=>"", "UQM"=>"", "QTY"=>"", "RATE_P_U"=>"", "AMOUNT"=>"", "LESS_DISCOUNT_ABATEMENT"=>"", "TAXABLE_AMOUNT"=>"", "CGST_RATE_OF_TAX"=>"", "CGST_AMT"=>"", "SGST_RATE_OF_TAX"=>"", "SGST_AMT"=>"", "IGST_RATE_OF_TAX"=>"", "IGST_AMT"=>"", "TOTAL_AMOUNT"=>"", "_destroy"=>"false"}}}, "commit"=>"Create Purchase"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `purchases` (`GSTIN_UIN`, `EMAIL_ID`, `CIN`, `TELEPHONE_NO`, `PAN`, `FAX`, `REVERSE_CHARGE`, `TRANSPORTATION_MODE`, `INVOICE_NO`, `VEHICLE_NO`, `INVOICE_DATE`, `DATE_OF_SUPPLY`, `STATE`, `PLACE_OF_SUPPLY`, `STATE_CODE`, `BUYER_NAME`, `BUYER_ADDRESS`, `BUYER_GSTIN_UIN`, `BUYER_CIN`, `BUYER_STATE`, `BUYER_STATE_CODE`, `CONSIGNEE_NAME`, `CONSIGNEE_ADDRESS`, `CONSIGNEE_GSTIN_UIN`, `CONSIGNEE_CIN`, `CONSIGNEE_STATE`, `CONSIGNEE_STATE_CODE`, `APPLICATION_NO_FOR_REMOVAL_OF_GOODS`, `APPLICATION_DATE_FOR_REMOVAL_OF_GOODS`, `created_at`, `updated_at`, `user_id`, `comment`) VALUES ('XYZ', '', '', '', '', '', '', '', '', '', '2017-12-18 13:00:00', '2017-12-18 13:00:00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2017-12-18 13:00:00', '2017-12-18 13:01:03', '2017-12-18 13:01:03', 1, 'XYZ')[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `exports` (`purchase_id`, `NAME_OF_GOODS_SERVICES`, `HSNC_ACS`, `UQM`, `QTY`, `RATE_P_U`, `AMOUNT`, `LESS_DISCOUNT_ABATEMENT`, `TAXABLE_AMOUNT`, `CGST_RATE_OF_TAX`, `CGST_AMT`, `SGST_RATE_OF_TAX`, `SGST_AMT`, `IGST_RATE_OF_TAX`, `IGST_AMT`, `TOTAL_AMOUNT`, `created_at`, `updated_at`) VALUES (16, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2017-12-18 13:01:03', '2017-12-18 13:01:03')[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/purchases/16
+Completed 302 Found in 19ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/purchases/16" for 127.0.0.1 at 2017-12-18 18:31:03 +0530
+Processing by PurchasesController#show as HTML
+  Parameters: {"id"=>"16"}
+  [1m[36mPurchase Load (0.4ms)[0m  [1m[34mSELECT  `purchases`.* FROM `purchases` WHERE `purchases`.`id` = 16 LIMIT 1[0m
+  Rendering purchases/show.html.erb within layouts/application
+  [1m[36mExport Load (0.5ms)[0m  [1m[34mSELECT `exports`.* FROM `exports` WHERE `exports`.`purchase_id` = 16[0m
+  Rendered purchases/show.html.erb within layouts/application (4.6ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 161ms (Views: 156.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/photos/thumb/missing.png" for 127.0.0.1 at 2017-12-18 18:31:03 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/photos/thumb/missing.png"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/purchases" for 127.0.0.1 at 2017-12-18 18:31:10 +0530
+Processing by PurchasesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  Rendering purchases/index.html.erb within layouts/application
+  [1m[36mPurchase Load (0.4ms)[0m  [1m[34mSELECT `purchases`.* FROM `purchases` WHERE `purchases`.`user_id` = 1[0m
+  Rendered purchases/index.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 137ms (Views: 133.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/photos/thumb/missing.png" for 127.0.0.1 at 2017-12-18 18:31:10 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/photos/thumb/missing.png"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started DELETE "/purchases/16" for 127.0.0.1 at 2017-12-18 18:31:15 +0530
+Processing by PurchasesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ik5tv/ZpL8+SmPOMTPgxN7xl2KsW9LuXlXkhQYD6mCaCUymYMQpo37e7k2rrkCKdUidoY0732n88H9KAkJpeCw==", "id"=>"16"}
+  [1m[36mPurchase Load (0.4ms)[0m  [1m[34mSELECT  `purchases`.* FROM `purchases` WHERE `purchases`.`id` = 16 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[31mDELETE FROM `exports` WHERE `exports`.`purchase_id` = 16[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM `purchases` WHERE `purchases`.`id` = 16[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/purchases
+Completed 302 Found in 10ms (ActiveRecord: 4.7ms)
+
+
+Started GET "/purchases" for 127.0.0.1 at 2017-12-18 18:31:15 +0530
+Processing by PurchasesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  Rendering purchases/index.html.erb within layouts/application
+  [1m[36mPurchase Load (0.8ms)[0m  [1m[34mSELECT `purchases`.* FROM `purchases` WHERE `purchases`.`user_id` = 1[0m
+  Rendered purchases/index.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 149ms (Views: 145.7ms | ActiveRecord: 1.1ms)
+
+
+Started DELETE "/purchases/15" for 127.0.0.1 at 2017-12-18 18:31:19 +0530
+Processing by PurchasesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ZOft2bOQ/Nf6qLEdBT6d0ZcTJ6tNQQwKtF3zwEcwm39s+qn+dPO7x9+L0fuiVo57eVGXYxVCbeIdOwABV1BdUg==", "id"=>"15"}
+  [1m[36mPurchase Load (0.5ms)[0m  [1m[34mSELECT  `purchases`.* FROM `purchases` WHERE `purchases`.`id` = 15 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM `exports` WHERE `exports`.`purchase_id` = 15[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM `purchases` WHERE `purchases`.`id` = 15[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/purchases
+Completed 302 Found in 10ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/purchases" for 127.0.0.1 at 2017-12-18 18:31:19 +0530
+Processing by PurchasesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  Rendering purchases/index.html.erb within layouts/application
+  [1m[36mPurchase Load (0.3ms)[0m  [1m[34mSELECT `purchases`.* FROM `purchases` WHERE `purchases`.`user_id` = 1[0m
+  Rendered purchases/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 140ms (Views: 136.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-18 18:33:31 +0530
+  [1m[35m (0.2ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  Rendered welcome/index.html.erb within layouts/application (26.4ms)
+Completed 200 OK in 776ms (Views: 762.5ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/sales/new" for 127.0.0.1 at 2017-12-18 18:33:35 +0530
+Processing by SalesController#new as HTML
+  Rendering sales/new.html.erb within layouts/application
+  Rendered sales/_form.html.erb (105.7ms)
+  Rendered sales/new.html.erb within layouts/application (110.1ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 353ms (Views: 259.0ms | ActiveRecord: 5.3ms)
+
+
+Started POST "/sales" for 127.0.0.1 at 2017-12-18 18:33:43 +0530
+Processing by SalesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cvSgtTirkP4WujU4PnQUUEQt7QUS0ijwFfUubNMXR6iIX8yUcyug5MUE3QOc0XD9GRSAds/0dQwfgKcqFcMnVQ==", "sale"=>{"GSTIN_UIN"=>"ABC", "EMAIL_ID"=>"", "CIN"=>"", "TELEPHONE_NO"=>"", "PAN"=>"", "FAX"=>"", "REVERSE_CHARGE"=>"", "TRANSPORTATION_MODE"=>"", "INVOICE_NO"=>"", "VEHICLE_NO"=>"", "INVOICE_DATE(1i)"=>"2017", "INVOICE_DATE(2i)"=>"12", "INVOICE_DATE(3i)"=>"18", "INVOICE_DATE(4i)"=>"13", "INVOICE_DATE(5i)"=>"03", "DATE_OF_SUPPLY(1i)"=>"2017", "DATE_OF_SUPPLY(2i)"=>"12", "DATE_OF_SUPPLY(3i)"=>"18", "DATE_OF_SUPPLY(4i)"=>"13", "DATE_OF_SUPPLY(5i)"=>"03", "STATE"=>"", "PLACE_OF_SUPPLY"=>"", "STATE_CODE"=>"", "BUYER_NAME"=>"", "BUYER_ADDRESS"=>"", "BUYER_GSTIN_UIN"=>"", "BUYER_CIN"=>"", "BUYER_STATE"=>"", "BUYER_STATE_CODE"=>"", "CONSIGNEE_NAME"=>"", "CONSIGNEE_ADDRESS"=>"", "CONSIGNEE_GSTIN_UIN"=>"", "CONSIGNEE_CIN"=>"", "CONSIGNEE_STATE"=>"", "CONSIGNEE_STATE_CODE"=>"", "APPLICATION_NO_FOR_REMOVAL_OF_GOODS"=>"", "APPLICATION_DATE_FOR_REMOVAL_OF_GOODS(1i)"=>"2017", "APPLICATION_DATE_FOR_REMOVAL_OF_GOODS(2i)"=>"12", "APPLICATION_DATE_FOR_REMOVAL_OF_GOODS(3i)"=>"18", "APPLICATION_DATE_FOR_REMOVAL_OF_GOODS(4i)"=>"13", "APPLICATION_DATE_FOR_REMOVAL_OF_GOODS(5i)"=>"03", "comment"=>"ABC"}, "commit"=>"Create Sale"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `sales` (`GSTIN_UIN`, `EMAIL_ID`, `CIN`, `TELEPHONE_NO`, `PAN`, `FAX`, `REVERSE_CHARGE`, `TRANSPORTATION_MODE`, `INVOICE_NO`, `VEHICLE_NO`, `INVOICE_DATE`, `DATE_OF_SUPPLY`, `STATE`, `PLACE_OF_SUPPLY`, `STATE_CODE`, `BUYER_NAME`, `BUYER_ADDRESS`, `BUYER_GSTIN_UIN`, `BUYER_CIN`, `BUYER_STATE`, `BUYER_STATE_CODE`, `CONSIGNEE_NAME`, `CONSIGNEE_ADDRESS`, `CONSIGNEE_GSTIN_UIN`, `CONSIGNEE_CIN`, `CONSIGNEE_STATE`, `CONSIGNEE_STATE_CODE`, `APPLICATION_NO_FOR_REMOVAL_OF_GOODS`, `APPLICATION_DATE_FOR_REMOVAL_OF_GOODS`, `created_at`, `updated_at`, `user_id`, `comment`) VALUES ('ABC', '', '', '', '', '', '', '', '', '', '2017-12-18 13:03:00', '2017-12-18 13:03:00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2017-12-18 13:03:00', '2017-12-18 13:03:43', '2017-12-18 13:03:43', 1, 'ABC')[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/sales/5
+Completed 302 Found in 26ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/sales/5" for 127.0.0.1 at 2017-12-18 18:33:43 +0530
+Processing by SalesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mSale Load (0.5ms)[0m  [1m[34mSELECT  `sales`.* FROM `sales` WHERE `sales`.`id` = 5 LIMIT 1[0m
+  Rendering sales/show.html.erb within layouts/application
+  [1m[36mExportsale Load (0.4ms)[0m  [1m[34mSELECT `exportsales`.* FROM `exportsales` WHERE `exportsales`.`sale_id` = 5[0m
+  Rendered sales/show.html.erb within layouts/application (9.1ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 186ms (Views: 179.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/photos/thumb/missing.png" for 127.0.0.1 at 2017-12-18 18:33:43 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/photos/thumb/missing.png"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/sales/5/edit" for 127.0.0.1 at 2017-12-18 18:33:47 +0530
+Processing by SalesController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mSale Load (0.3ms)[0m  [1m[34mSELECT  `sales`.* FROM `sales` WHERE `sales`.`id` = 5 LIMIT 1[0m
+  Rendering sales/edit.html.erb within layouts/application
+  [1m[36mExportsale Load (0.3ms)[0m  [1m[34mSELECT `exportsales`.* FROM `exportsales` WHERE `exportsales`.`sale_id` = 5[0m
+  Rendered sales/_form.html.erb (17.9ms)
+  Rendered sales/edit.html.erb within layouts/application (20.1ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 167ms (Views: 162.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/photos/thumb/missing.png" for 127.0.0.1 at 2017-12-18 18:33:47 +0530
+  
+Started GET "/photos/original/missing.png" for 127.0.0.1 at 2017-12-18 18:33:47 +0530
+ActionController::RoutingError (No route matches [GET] "/photos/thumb/missing.png"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/photos/original/missing.png"):
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started PATCH "/sales/5" for 127.0.0.1 at 2017-12-18 18:33:54 +0530
+Processing by SalesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gZb4ugrw8ZptNuYWgnbr2Z0XinCqOg1PyVf9DR9RZBcYV8Xf1U6yUB+Pbj3519xT79EiCtk+f48kCkZb5DybXQ==", "sale"=>{"GSTIN_UIN"=>"ABC", "EMAIL_ID"=>"", "CIN"=>"", "TELEPHONE_NO"=>"", "PAN"=>"", "FAX"=>"", "REVERSE_CHARGE"=>"", "TRANSPORTATION_MODE"=>"", "INVOICE_NO"=>"", "VEHICLE_NO"=>"", "INVOICE_DATE(1i)"=>"2017", "INVOICE_DATE(2i)"=>"12", "INVOICE_DATE(3i)"=>"18", "INVOICE_DATE(4i)"=>"13", "INVOICE_DATE(5i)"=>"03", "DATE_OF_SUPPLY(1i)"=>"2017", "DATE_OF_SUPPLY(2i)"=>"12", "DATE_OF_SUPPLY(3i)"=>"18", "DATE_OF_SUPPLY(4i)"=>"13", "DATE_OF_SUPPLY(5i)"=>"03", "STATE"=>"", "PLACE_OF_SUPPLY"=>"", "STATE_CODE"=>"", "BUYER_NAME"=>"", "BUYER_ADDRESS"=>"", "BUYER_GSTIN_UIN"=>"", "BUYER_CIN"=>"", "BUYER_STATE"=>"", "BUYER_STATE_CODE"=>"", "CONSIGNEE_NAME"=>"", "CONSIGNEE_ADDRESS"=>"", "CONSIGNEE_GSTIN_UIN"=>"", "CONSIGNEE_CIN"=>"", "CONSIGNEE_STATE"=>"", "CONSIGNEE_STATE_CODE"=>"", "APPLICATION_NO_FOR_REMOVAL_OF_GOODS"=>"", "APPLICATION_DATE_FOR_REMOVAL_OF_GOODS(1i)"=>"2017", "APPLICATION_DATE_FOR_REMOVAL_OF_GOODS(2i)"=>"12", "APPLICATION_DATE_FOR_REMOVAL_OF_GOODS(3i)"=>"18", "APPLICATION_DATE_FOR_REMOVAL_OF_GOODS(4i)"=>"13", "APPLICATION_DATE_FOR_REMOVAL_OF_GOODS(5i)"=>"03", "comment"=>"XYZ"}, "commit"=>"Update Sale", "id"=>"5"}
+  [1m[36mSale Load (0.4ms)[0m  [1m[34mSELECT  `sales`.* FROM `sales` WHERE `sales`.`id` = 5 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE `sales` SET `comment` = 'XYZ', `updated_at` = '2017-12-18 13:03:54' WHERE `sales`.`id` = 5[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/sales/5
+Completed 302 Found in 18ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/sales/5" for 127.0.0.1 at 2017-12-18 18:33:54 +0530
+Processing by SalesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mSale Load (0.3ms)[0m  [1m[34mSELECT  `sales`.* FROM `sales` WHERE `sales`.`id` = 5 LIMIT 1[0m
+  Rendering sales/show.html.erb within layouts/application
+  [1m[36mExportsale Load (1.2ms)[0m  [1m[34mSELECT `exportsales`.* FROM `exportsales` WHERE `exportsales`.`sale_id` = 5[0m
+  Rendered sales/show.html.erb within layouts/application (10.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 205ms (Views: 200.1ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/photos/thumb/missing.png" for 127.0.0.1 at 2017-12-18 18:33:55 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/photos/thumb/missing.png"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/sales" for 127.0.0.1 at 2017-12-18 18:33:58 +0530
+Processing by SalesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  Rendering sales/index.html.erb within layouts/application
+  [1m[36mSale Load (0.7ms)[0m  [1m[34mSELECT `sales`.* FROM `sales` WHERE `sales`.`user_id` = 1[0m
+  Rendered sales/index.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 134ms (Views: 127.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/photos/thumb/missing.png" for 127.0.0.1 at 2017-12-18 18:33:58 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/photos/thumb/missing.png"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started DELETE "/sales/5" for 127.0.0.1 at 2017-12-18 18:34:03 +0530
+Processing by SalesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"FG8UFyb6jZ0Rk/PR62GAfGIsPCXziyOvFalk7FuN+9EcclAw4ZnKjTSwkzdMCZPWjG6M7auIQke8z5ctS+09/A==", "id"=>"5"}
+  [1m[36mSale Load (0.3ms)[0m  [1m[34mSELECT  `sales`.* FROM `sales` WHERE `sales`.`id` = 5 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM `exportsales` WHERE `exportsales`.`sale_id` = 5[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM `sales` WHERE `sales`.`id` = 5[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/sales
+Completed 302 Found in 8ms (ActiveRecord: 2.7ms)
+
+
+Started GET "/sales" for 127.0.0.1 at 2017-12-18 18:34:03 +0530
+Processing by SalesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  Rendering sales/index.html.erb within layouts/application
+  [1m[36mSale Load (0.3ms)[0m  [1m[34mSELECT `sales`.* FROM `sales` WHERE `sales`.`user_id` = 1[0m
+  Rendered sales/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 141ms (Views: 138.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/log_out" for 127.0.0.1 at 2017-12-18 18:34:04 +0530
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-18 18:34:04 +0530
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 159ms (Views: 157.0ms | ActiveRecord: 0.0ms)
+
+
