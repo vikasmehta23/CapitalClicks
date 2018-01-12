@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171218125108) do
+ActiveRecord::Schema.define(version: 20180112180625) do
 
   create_table "exports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "purchase_id"
@@ -198,6 +198,16 @@ ActiveRecord::Schema.define(version: 20171218125108) do
     t.string "password_salt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "company"
+    t.string "address"
+    t.string "gst"
+    t.string "phone"
+    t.string "bankname"
+    t.string "branchcode"
+    t.string "accountnumber"
+    t.string "ifsccode"
+    t.string "pan"
+    t.string "cin"
   end
 
   add_foreign_key "exports", "purchases"

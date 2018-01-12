@@ -33,6 +33,7 @@
         <td width="200px"><%= sale.INVOICE_NO %></td>
         <td width="300px"><%= sale.INVOICE_DATE %></td>
         <td width="300px"><%= current_user.email %></td>
+        <td width="500px"><%= link_to "Download", download_sale_path(id: sale.id) %></td>
         <td width="200px"><%= link_to 'Show', sale %></td>
         <td width="200px"><%= link_to 'Edit', edit_sale_path(sale) %></td>
         <td width="200px"><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>

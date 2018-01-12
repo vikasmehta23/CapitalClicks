@@ -1,6 +1,7 @@
 class SalesController < ApplicationController
-  before_action :set_sale, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_sale, only: [:show, :edit, :update, :destroy,:download]
+  require 'rubyXL'
+  require 'numbers_in_words'
   # GET /sales
   # GET /sales.json
   def index
@@ -20,6 +21,61 @@ class SalesController < ApplicationController
   # GET /sales/1/edit
   def edit
   end
+
+    def download
+    book = RubyXL::Parser.parse("#{Rails.root}/public/Sample.xlsx")
+    sheet = book.worksheets[0]
+    sheet[2][2].change_contents(current_user.company)
+    sheet[4][0].change_contents(current_user.address)
+    sheet[6][1].change_contents(current_user.email)
+    sheet[7][1].change_contents(current_user.gst)
+    sheet[8][1].change_contents(@sale.INVOICE_NO)
+    sheet[9][1].change_contents(@sale.INVOICE_DATE)
+    sheet[16][1].change_contents(@sale.PAN)
+    sheet[10][4].change_contents(@sale.REVERSE_CHARGE)
+    sheet[17][1].change_contents(@sale.GSTIN_UIN)
+    sheet[17][6].change_contents(@sale.CIN)
+    sheet[11][0].change_contents(@sale.BUYER_NAME)
+    sheet[11][5].change_contents(@sale.PLACE_OF_SUPPLY)
+        sheet[16][6].change_contents(@sale.VEHICLE_NO)
+    sheet[6][6].change_contents(current_user.phone)
+    sheet[7][6].change_contents(current_user.phone)
+    sheet[38][0].change_contents("Bank: "+ current_user.bankname + " , Branch Code: " +current_user.branchcode+" , Account: "+current_user.accountnumber + " , IFSC: "+current_user.ifsccode)
+    sheet[44][1].change_contents(current_user.pan)
+    sheet[45][1].change_contents(current_user.cin)
+    export_sheet_no = 19
+    total_amount = 0
+    total_discount = 0
+    total_SGST = 0
+    total_CGST = 0
+    total_IGST = 0
+    @sale.exportsales.each do |e|
+      sheet[export_sheet_no][0].change_contents(e.NAME_OF_GOODS_SERVICES)
+      sheet[export_sheet_no][4].change_contents(e.HSNC_ACS)
+      sheet[export_sheet_no][5].change_contents(e.QTY)
+      #sheet[export_sheet_no][6].change_contents(e.HSNC_ACS)
+      sheet[export_sheet_no][7].change_contents(e.RATE_P_U)
+      sheet[export_sheet_no][8].change_contents(e.AMOUNT)
+      total_amount = total_amount + e.AMOUNT.to_i
+      total_discount = total_discount + e.LESS_DISCOUNT_ABATEMENT.to_i
+      total_SGST = total_SGST + e.SGST_AMT.to_i
+      total_CGST = total_CGST + e.CGST_AMT.to_i
+      total_IGST = total_IGST + e.IGST_AMT.to_i
+      export_sheet_no = export_sheet_no + 1
+    end
+    sheet[38][8].change_contents(total_amount)
+    sheet[39][8].change_contents(total_discount)
+    sheet[40][8].change_contents(total_SGST)
+    sheet[41][8].change_contents(total_CGST)
+    sheet[42][8].change_contents(total_IGST)
+    grand_total = total_amount - total_discount + total_SGST + total_CGST +total_IGST
+    sheet[43][8].change_contents(grand_total)
+    sheet[41][0].change_contents(NumbersInWords.in_words(grand_total))
+
+    book.save "#{Rails.root}/public/Report.xlsx"
+    send_file "#{Rails.root}/public/Report.xlsx"
+  end
+
 
   # POST /sales
   # POST /sales.json

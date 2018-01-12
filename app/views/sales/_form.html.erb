@@ -150,13 +150,13 @@
                         <%= f.text_field :UQM, class: 'form-control', placeholder: 'UQM'  %>
                       </div>
                       <div class="form-group">
-                        <%= f.text_area :QTY, class: 'form-control', placeholder: 'QTY'  %>
+                        <%= f.text_area :QTY, class: 'form-control QTY', placeholder: 'QTY'  %>
                       </div>
                        <div class="form-group">
-                        <%= f.text_field :RATE_P_U , class: 'form-control', placeholder: 'RATE P U' %>
+                        <%= f.text_field :RATE_P_U , class: 'form-control RATE', placeholder: 'RATE P U' %>
                       </div>
                       <div class="form-group">
-                        <%= f.text_area :AMOUNT , class: 'form-control', placeholder: 'AMOUNT' %>
+                        <%= f.text_area :AMOUNT , class: 'form-control AMOUNT', placeholder: 'AMOUNT' %>
                       </div>
                        <div class="form-group">
                         <%= f.text_field :LESS_DISCOUNT_ABATEMENT , class: 'form-control', placeholder: 'LESS DISCOUNT ABATEMENT' %>
@@ -165,24 +165,19 @@
                         <%= f.text_area :TAXABLE_AMOUNT , class: 'form-control', placeholder: 'TAXABLE AMOUNT' %>
                       </div>
                        <div class="form-group">
-                        <%= f.text_field :CGST_RATE_OF_TAX , class: 'form-control', placeholder: 'CGST RATE OF TAX' %>
+                        <%= f.text_field :CGST_RATE_OF_TAX , class: 'form-control CGST', placeholder: 'CGST RATE OF TAX' %>
                       </div>
                       <div class="form-group">
                         <%= f.text_area :CGST_AMT , class: 'form-control', placeholder: 'CGST AMT' %>
                       </div>
-
-                      <div class="form-group">
-
-                        <%= f.text_area :AMOUNT , class: 'form-control', placeholder: 'AMOUNT' %>
-                      </div>
                        <div class="form-group">
-                        <%= f.text_field :SGST_RATE_OF_TAX , class: 'form-control', placeholder: 'SGST RATE OF TAX' %>
+                        <%= f.text_field :SGST_RATE_OF_TAX , class: 'form-control SGST', placeholder: 'SGST RATE OF TAX' %>
                       </div>
                       <div class="form-group">
                         <%= f.text_area :SGST_AMT , class: 'form-control', placeholder: 'SGST AMT'  %>
                       </div>
                        <div class="form-group">
-                        <%= f.text_field :IGST_RATE_OF_TAX , class: 'form-control', placeholder: 'IGST RATE OF TAX' %>
+                        <%= f.text_field :IGST_RATE_OF_TAX , class: 'form-control IGST', placeholder: 'IGST RATE OF TAX' %>
                       </div>
                       <div class="form-group">
                         <%= f.text_area :IGST_AMT , class: 'form-control', placeholder: 'IGST AMT' %>
@@ -207,3 +202,40 @@
         </div>
     </div>
 </section>
+
+<script type="text/javascript">
+  $( document ).ready(function() {
+    $(document).on("focusout", ".RATE" , function() {
+      id = $(this).attr('id').split("_")[3];
+      rate = $(this).val();
+      qty  = $("#sale_exportsales_attributes_"+id+"_QTY").val();
+      $("#sale_exportsales_attributes_"+id+"_AMOUNT").val(rate*qty);
+    });
+
+    $(document).on("focusout", ".CGST" , function() {
+      id = $(this).attr('id').split("_")[3];
+      gst = $(this).val();
+      amount  = $("#sale_exportsales_attributes_"+id+"_AMOUNT").val();
+      $("#sale_exportsales_attributes_"+id+"_CGST_AMT").val(gst*amount/100);
+    });
+
+    $(document).on("focusout", ".SGST" , function() {
+      id = $(this).attr('id').split("_")[3];
+      gst = $(this).val();
+      amount  = $("#sale_exportsales_attributes_"+id+"_AMOUNT").val();
+      $("#sale_exportsales_attributes_"+id+"_SGST_AMT").val(gst*amount/100);
+    });
+
+    $(document).on("focusout", ".IGST" , function() {
+      id = $(this).attr('id').split("_")[3];
+      gst = $(this).val();
+      amount  = $("#sale_exportsales_attributes_"+id+"_AMOUNT").val();
+      $("#sale_exportsales_attributes_"+id+"_IGST_AMT").val(gst*amount/100);
+
+      $("#sale_exportsales_attributes_"+id+"_TOTAL_AMOUNT").val(parseInt(amount)+parseInt($("#sale_exportsales_attributes_"+id+"_CGST_AMT").val())+parseInt($("#sale_exportsales_attributes_"+id+"_SGST_AMT").val())+parseInt($("#sale_exportsales_attributes_"+id+"_IGST_AMT").val()));
+    });
+  });
+</script>
+
+
+
