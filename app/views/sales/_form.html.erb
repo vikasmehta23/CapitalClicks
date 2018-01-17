@@ -156,6 +156,9 @@
                       <div class="form-group">
                         <%= f.text_area :QTY, class: 'form-control QTY', placeholder: 'QTY'  %>
                       </div>
+                      <div class="form-group">
+                        <%= f.text_field :gstper, class: 'form-control', placeholder: 'GST Per'  %>
+                      </div>
                        <div class="form-group">
                         <%= f.text_field :RATE_P_U , class: 'form-control RATE', placeholder: 'RATE P U' %>
                       </div>
@@ -188,6 +191,9 @@
                       </div>
                       <div class="form-group">
                         <%= f.text_area :TOTAL_AMOUNT , class: 'form-control', placeholder: 'TOTAL AMOUNT' %>
+                      </div>
+                       <div class="form-group">
+                        <%= f.text_field :remark, class: 'form-control', placeholder: 'Remark'  %>
                       </div>
                       <h4><u><%= f.link_to_remove "Remove this export" %></u></h4>
                     <% end %>

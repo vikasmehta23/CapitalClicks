@@ -41,15 +41,15 @@ class SalesController < ApplicationController
     sheet[6][1].change_contents(current_user.email)
     sheet[7][1].change_contents(current_user.gst)
     sheet[8][1].change_contents(@sale.INVOICE_NO)
-    sheet[9][1].change_contents(@sale.INVOICE_DATE)
+    sheet[9][1].change_contents(@sale.INVOICE_DATE.strftime("%d/%m/%Y"))
     sheet[16][1].change_contents(@sale.PAN)
     sheet[10][4].change_contents(@sale.REVERSE_CHARGE)
     sheet[17][1].change_contents(@sale.GSTIN_UIN)
     sheet[17][6].change_contents(@sale.CIN)
-    sheet[11][0].change_contents(@sale.BUYER_NAME)
+    sheet[11][0].change_contents(@sale.BUYER_NAME + ", "+ @sale.BUYER_ADDRESS)
     sheet[11][5].change_contents(@sale.PLACE_OF_SUPPLY)
     sheet[16][6].change_contents(@sale.VEHICLE_NO)
-    sheet[6][6].change_contents(current_user.phone)
+    sheet[6][6].change_contents(current_user.landline)
     sheet[7][6].change_contents(current_user.phone)
     sheet[38][0].change_contents("Bank: "+ current_user.bankname + " , Branch Code: " +current_user.branchcode+" , Account: "+current_user.accountnumber + " , IFSC: "+current_user.ifsccode)
     sheet[44][1].change_contents(current_user.pan)
@@ -61,10 +61,10 @@ class SalesController < ApplicationController
     total_CGST = 0
     total_IGST = 0
     @sale.exportsales.each do |e|
-      sheet[export_sheet_no][0].change_contents(e.NAME_OF_GOODS_SERVICES)
+      sheet[export_sheet_no][0].change_contents(e.NAME_OF_GOODS_SERVICES + " ("+ e.remark + ")")
       sheet[export_sheet_no][4].change_contents(e.HSNC_ACS)
       sheet[export_sheet_no][5].change_contents(e.QTY)
-      #sheet[export_sheet_no][6].change_contents(e.HSNC_ACS)
+      sheet[export_sheet_no][6].change_contents(e.gstper)
       sheet[export_sheet_no][7].change_contents(e.RATE_P_U)
       sheet[export_sheet_no][8].change_contents(e.AMOUNT)
       total_amount = total_amount + e.AMOUNT.to_i
@@ -74,6 +74,7 @@ class SalesController < ApplicationController
       total_IGST = total_IGST + e.IGST_AMT.to_i
       export_sheet_no = export_sheet_no + 1
     end
+    sheet[44][6].change_contents("For "+current_user.company)
     sheet[38][8].change_contents(total_amount)
     sheet[39][8].change_contents(total_discount)
     sheet[40][8].change_contents(total_SGST)
@@ -135,6 +136,6 @@ class SalesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sale_params
-      params.require(:sale).permit(:GSTIN_UIN, :EMAIL_ID, :CIN, :TELEPHONE_NO,:landline, :PAN, :FAX, :REVERSE_CHARGE, :TRANSPORTATION_MODE, :INVOICE_NO, :VEHICLE_NO, :INVOICE_DATE, :DATE_OF_SUPPLY, :STATE, :PLACE_OF_SUPPLY, :STATE_CODE, :BUYER_NAME, :BUYER_ADDRESS, :BUYER_GSTIN_UIN, :BUYER_CIN, :BUYER_STATE, :BUYER_STATE_CODE, :CONSIGNEE_NAME, :CONSIGNEE_ADDRESS, :CONSIGNEE_GSTIN_UIN, :CONSIGNEE_CIN, :CONSIGNEE_STATE, :CONSIGNEE_STATE_CODE, :APPLICATION_NO_FOR_REMOVAL_OF_GOODS, :APPLICATION_DATE_FOR_REMOVAL_OF_GOODS,:comment,:photo,exportsales_attributes:[:id, :purchase_id,:NAME_OF_GOODS_SERVICES,:HSNC_ACS,:UQM,:QTY,:RATE_P_U,:AMOUNT,:LESS_DISCOUNT_ABATEMENT, :TAXABLE_AMOUNT,:CGST_RATE_OF_TAX,:CGST_AMT,:SGST_RATE_OF_TAX,:SGST_AMT,:IGST_RATE_OF_TAX,:IGST_AMT,:TOTAL_AMOUNT,:_destroy])
+      params.require(:sale).permit(:GSTIN_UIN, :EMAIL_ID, :CIN, :TELEPHONE_NO,:landline, :PAN, :FAX, :REVERSE_CHARGE, :TRANSPORTATION_MODE, :INVOICE_NO, :VEHICLE_NO, :INVOICE_DATE, :DATE_OF_SUPPLY, :STATE, :PLACE_OF_SUPPLY, :STATE_CODE, :BUYER_NAME, :BUYER_ADDRESS, :BUYER_GSTIN_UIN, :BUYER_CIN, :BUYER_STATE, :BUYER_STATE_CODE, :CONSIGNEE_NAME, :CONSIGNEE_ADDRESS, :CONSIGNEE_GSTIN_UIN, :CONSIGNEE_CIN, :CONSIGNEE_STATE, :CONSIGNEE_STATE_CODE, :APPLICATION_NO_FOR_REMOVAL_OF_GOODS, :APPLICATION_DATE_FOR_REMOVAL_OF_GOODS,:comment,:photo,exportsales_attributes:[:id, :purchase_id,:NAME_OF_GOODS_SERVICES,:HSNC_ACS,:UQM,:QTY,:gstper,:remark,:RATE_P_U,:AMOUNT,:LESS_DISCOUNT_ABATEMENT, :TAXABLE_AMOUNT,:CGST_RATE_OF_TAX,:CGST_AMT,:SGST_RATE_OF_TAX,:SGST_AMT,:IGST_RATE_OF_TAX,:IGST_AMT,:TOTAL_AMOUNT,:_destroy])
     end
 end
