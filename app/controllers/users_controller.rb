@@ -15,7 +15,7 @@ end
  private
 
   def user_params
-    params.require(:user).permit(:email, :password, :encrypted_password,:company, :address,:gst, :phone,:bankname, :branchcode, :accountnumber,:ifsccode, :pan,:cin)
+    params.require(:user).permit(:email, :password, :encrypted_password,:company, :address,:gst, :phone,:landline,:bankname, :branchcode, :accountnumber,:ifsccode, :pan,:cin)
   end
 
 end

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'sessions/new'
 
   get 'users/new'
-
+  get "sales/buyergst" => "sales#buyergst", :as => "buyergst_sale"
   resources :sales
   root 'welcome#index'
 

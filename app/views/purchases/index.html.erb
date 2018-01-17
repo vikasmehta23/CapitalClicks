@@ -13,27 +13,14 @@
 <table>
   <thead>
     <tr>
-      <th width="200px">Gstin uin</th>
-      <th width="200px">Email id      </th>
-      <th width="200px">Telephone no  </th>
-      <th width="200px">Pan           </th>
-      <th width="200px">Invoice no    </th>
-      <th width="300px">Invoice date  </th>
-      <th width="300px">User  </th>
+      <th width="200px">Image</th>
     </tr>
   </thead>
 
   <tbody>
     <% @purchases.each do |purchase| %>
       <tr>
-        <td width="200px"><%= purchase.GSTIN_UIN %></td>
-        <td width="200px"><%= purchase.EMAIL_ID %></td>
-        <td width="200px"><%= purchase.TELEPHONE_NO %></td>
-        <td width="200px"><%= purchase.PAN %></td>
-        <td width="200px"><%= purchase.INVOICE_NO %></td>
-        <td width="300px"><%= purchase.INVOICE_DATE %></td>
-        <td width="300px"><%= current_user.email %></td>
-        <td width="500px"><%= link_to "Download", download_purchase_path(id: purchase.id) %></td>
+        <td width="200px"><%= image_tag purchase.photo.url(:small) %></td>
         <td width="200px"><%= link_to 'Show', purchase %></td>
         <td width="200px"><%= link_to 'Edit', edit_purchase_path(purchase) %></td>
         <td width="200px"><%= link_to 'Destroy', purchase, method: :delete, data: { confirm: 'Are you sure?' } %></td>

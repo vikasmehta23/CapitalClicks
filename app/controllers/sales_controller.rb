@@ -16,6 +16,17 @@ class SalesController < ApplicationController
   # GET /sales/new
   def new
     @sale = Sale.new
+    @user = current_user
+  end
+
+  def buyergst
+    parameter = params[:gst]
+    # do something with some_parameter and return the results
+
+    @sale=Sale.find_by BUYER_GSTIN_UIN: parameter.to_s
+    respond_to do |format|
+      format.json { render json: @sale }
+    end
   end
 
   # GET /sales/1/edit
@@ -37,7 +48,7 @@ class SalesController < ApplicationController
     sheet[17][6].change_contents(@sale.CIN)
     sheet[11][0].change_contents(@sale.BUYER_NAME)
     sheet[11][5].change_contents(@sale.PLACE_OF_SUPPLY)
-        sheet[16][6].change_contents(@sale.VEHICLE_NO)
+    sheet[16][6].change_contents(@sale.VEHICLE_NO)
     sheet[6][6].change_contents(current_user.phone)
     sheet[7][6].change_contents(current_user.phone)
     sheet[38][0].change_contents("Bank: "+ current_user.bankname + " , Branch Code: " +current_user.branchcode+" , Account: "+current_user.accountnumber + " , IFSC: "+current_user.ifsccode)
@@ -124,6 +135,6 @@ class SalesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sale_params
-      params.require(:sale).permit(:GSTIN_UIN, :EMAIL_ID, :CIN, :TELEPHONE_NO, :PAN, :FAX, :REVERSE_CHARGE, :TRANSPORTATION_MODE, :INVOICE_NO, :VEHICLE_NO, :INVOICE_DATE, :DATE_OF_SUPPLY, :STATE, :PLACE_OF_SUPPLY, :STATE_CODE, :BUYER_NAME, :BUYER_ADDRESS, :BUYER_GSTIN_UIN, :BUYER_CIN, :BUYER_STATE, :BUYER_STATE_CODE, :CONSIGNEE_NAME, :CONSIGNEE_ADDRESS, :CONSIGNEE_GSTIN_UIN, :CONSIGNEE_CIN, :CONSIGNEE_STATE, :CONSIGNEE_STATE_CODE, :APPLICATION_NO_FOR_REMOVAL_OF_GOODS, :APPLICATION_DATE_FOR_REMOVAL_OF_GOODS,:comment,:photo,exportsales_attributes:[:id, :purchase_id,:NAME_OF_GOODS_SERVICES,:HSNC_ACS,:UQM,:QTY,:RATE_P_U,:AMOUNT,:LESS_DISCOUNT_ABATEMENT, :TAXABLE_AMOUNT,:CGST_RATE_OF_TAX,:CGST_AMT,:SGST_RATE_OF_TAX,:SGST_AMT,:IGST_RATE_OF_TAX,:IGST_AMT,:TOTAL_AMOUNT,:_destroy])
+      params.require(:sale).permit(:GSTIN_UIN, :EMAIL_ID, :CIN, :TELEPHONE_NO,:landline, :PAN, :FAX, :REVERSE_CHARGE, :TRANSPORTATION_MODE, :INVOICE_NO, :VEHICLE_NO, :INVOICE_DATE, :DATE_OF_SUPPLY, :STATE, :PLACE_OF_SUPPLY, :STATE_CODE, :BUYER_NAME, :BUYER_ADDRESS, :BUYER_GSTIN_UIN, :BUYER_CIN, :BUYER_STATE, :BUYER_STATE_CODE, :CONSIGNEE_NAME, :CONSIGNEE_ADDRESS, :CONSIGNEE_GSTIN_UIN, :CONSIGNEE_CIN, :CONSIGNEE_STATE, :CONSIGNEE_STATE_CODE, :APPLICATION_NO_FOR_REMOVAL_OF_GOODS, :APPLICATION_DATE_FOR_REMOVAL_OF_GOODS,:comment,:photo,exportsales_attributes:[:id, :purchase_id,:NAME_OF_GOODS_SERVICES,:HSNC_ACS,:UQM,:QTY,:RATE_P_U,:AMOUNT,:LESS_DISCOUNT_ABATEMENT, :TAXABLE_AMOUNT,:CGST_RATE_OF_TAX,:CGST_AMT,:SGST_RATE_OF_TAX,:SGST_AMT,:IGST_RATE_OF_TAX,:IGST_AMT,:TOTAL_AMOUNT,:_destroy])
     end
 end
