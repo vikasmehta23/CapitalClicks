@@ -31,6 +31,7 @@ class SalesController < ApplicationController
 
   # GET /sales/1/edit
   def edit
+    @user = current_user
   end
 
     def download
@@ -47,7 +48,7 @@ class SalesController < ApplicationController
     sheet[17][1].change_contents(@sale.GSTIN_UIN)
     sheet[17][6].change_contents(@sale.CIN)
     sheet[11][0].change_contents(@sale.BUYER_NAME + ", "+ @sale.BUYER_ADDRESS)
-    sheet[11][5].change_contents(@sale.PLACE_OF_SUPPLY)
+    sheet[11][5].change_contents(@sale.CONSIGNEE_NAME + ", "+ @sale.CONSIGNEE_ADDRESS)
     sheet[16][6].change_contents(@sale.VEHICLE_NO)
     sheet[6][6].change_contents(current_user.landline)
     sheet[7][6].change_contents(current_user.phone)
@@ -60,6 +61,7 @@ class SalesController < ApplicationController
     total_SGST = 0
     total_CGST = 0
     total_IGST = 0
+    grand_total =0
     @sale.exportsales.each do |e|
       sheet[export_sheet_no][0].change_contents(e.NAME_OF_GOODS_SERVICES + " ("+ e.remark + ")")
       sheet[export_sheet_no][4].change_contents(e.HSNC_ACS)
@@ -72,6 +74,7 @@ class SalesController < ApplicationController
       total_SGST = total_SGST + e.SGST_AMT.to_i
       total_CGST = total_CGST + e.CGST_AMT.to_i
       total_IGST = total_IGST + e.IGST_AMT.to_i
+      grand_total = grand_total + e.TOTAL_AMOUNT.to_i
       export_sheet_no = export_sheet_no + 1
     end
     sheet[44][6].change_contents("For "+current_user.company)
@@ -80,7 +83,6 @@ class SalesController < ApplicationController
     sheet[40][8].change_contents(total_SGST)
     sheet[41][8].change_contents(total_CGST)
     sheet[42][8].change_contents(total_IGST)
-    grand_total = total_amount - total_discount + total_SGST + total_CGST +total_IGST
     sheet[43][8].change_contents(grand_total)
     sheet[41][0].change_contents(NumbersInWords.in_words(grand_total))
 

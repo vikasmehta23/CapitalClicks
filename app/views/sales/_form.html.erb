@@ -64,20 +64,59 @@
                         <%= form.datetime_select :INVOICE_DATE, id: :sale_INVOICE_DATE, class: 'form-control', placeholder: 'INVOICE DATE' %>
                       </div>
 
-                      <div class="form-group">
+                      <!--<div class="form-group">
                         <%= form.datetime_select :DATE_OF_SUPPLY, id: :sale_DATE_OF_SUPPLY, class: 'form-control', placeholder: 'DATE OF SUPPLY' %>
-                      </div>
-
-                      <div class="form-group">
-                        <%= form.text_field :STATE, id: :sale_STATE, class: 'form-control', placeholder: 'STATE'  %>
-                      </div>
+                      </div>-->
 
                       <div class="form-group">
                         <%= form.text_field :PLACE_OF_SUPPLY, id: :sale_PLACE_OF_SUPPLY, class: 'form-control', placeholder: 'PLACE OF SUPPLY'  %>
                       </div>
 
                       <div class="form-group">
-                        <%= form.text_field :STATE_CODE, id: :sale_STATE_CODE, class: 'form-control', placeholder: 'STATE CODE'  %>
+                        <%= form.select(:STATE, options_for_select([["Select State"],["Andaman and Nicobar Islands"],
+["Andhra Pradesh"],
+["Telagana"],
+["Arunachal Pradesh"],
+["Assam"],
+["Bihar"],
+["Chandigarh"],
+["Chattisgarh"],
+["Dadra and Nagar Haveli"],
+["Daman and Diu"],
+["Delhi"],
+["Goa"],
+["Gujarat"],
+["Haryana"],
+["Himachal Pradesh"],
+["Jammu and Kashmir"],
+["Jharkhand"],
+["Karnataka"],
+["Kerala"],
+["Lakshadweep Islands"],
+["Madhya Pradesh"],
+["Maharashtra"],
+["Manipur"],
+["Meghalaya"],
+["Mizoram"],
+["Nagaland"],
+["Odisha"],
+["Pondicherry"],
+["Punjab"],
+["Rajasthan"],
+["Sikkim"],
+["Tamil Nadu"],
+["Telangana"],
+["Tripura"],
+["Uttar Pradesh"],
+["Uttarakhand"],
+["West Bengal"]
+                          ],class: 'form-control STATE',)) %>
+
+                      </div>
+
+                      <div class="form-group">
+
+                        <%= form.text_field :STATE_CODE, id: :sale_STATE_CODE, disabled: true,class: 'form-control', placeholder: 'STATE CODE'  %>
                       </div>
 
                        <div class="form-group">
@@ -97,11 +136,51 @@
                       </div>
 
                       <div class="form-group">
-                        <%= form.text_field :BUYER_STATE, id: :sale_BUYER_STATE, class: 'form-control', placeholder: 'BUYER STATE'  %>
+                           <%= form.select(:BUYER_STATE, options_for_select([["Select Buyer State"],["Andaman and Nicobar Islands"],
+["Andhra Pradesh"],
+["Telagana"],
+["Arunachal Pradesh"],
+["Assam"],
+["Bihar"],
+["Chandigarh"],
+["Chattisgarh"],
+["Dadra and Nagar Haveli"],
+["Daman and Diu"],
+["Delhi"],
+["Goa"],
+["Gujarat"],
+["Haryana"],
+["Himachal Pradesh"],
+["Jammu and Kashmir"],
+["Jharkhand"],
+["Karnataka"],
+["Kerala"],
+["Lakshadweep Islands"],
+["Madhya Pradesh"],
+["Maharashtra"],
+["Manipur"],
+["Meghalaya"],
+["Mizoram"],
+["Nagaland"],
+["Odisha"],
+["Pondicherry"],
+["Punjab"],
+["Rajasthan"],
+["Sikkim"],
+["Tamil Nadu"],
+["Telangana"],
+["Tripura"],
+["Uttar Pradesh"],
+["Uttarakhand"],
+["West Bengal"]
+                          ],class: 'form-control STATE',)) %>
+
+
+
                       </div>
 
                       <div class="form-group">
-                        <%= form.text_field :BUYER_STATE_CODE, id: :sale_BUYER_STATE_CODE, class: 'form-control', placeholder: 'BUYER STATE CODE'  %>
+                        <%= form.text_field :BUYER_STATE_CODE, id: :sale_BUYER_STATE_CODE , disabled: true,class: 'form-control', placeholder: 'BUYER STATE CODE'  %>
                       </div>
 
                       <div class="form-group">
@@ -121,11 +200,49 @@
                       </div>
 
                       <div class="form-group">
-                        <%= form.text_field :CONSIGNEE_STATE, id: :sale_CONSIGNEE_STATE, class: 'form-control', placeholder: 'CONSIGNEE STATE'  %>
+                                                   <%= form.select(:CONSIGNEE_STATE, options_for_select([["Select Consignee State"],["Andaman and Nicobar Islands"],
+["Andhra Pradesh"],
+["Telagana"],
+["Arunachal Pradesh"],
+["Assam"],
+["Bihar"],
+["Chandigarh"],
+["Chattisgarh"],
+["Dadra and Nagar Haveli"],
+["Daman and Diu"],
+["Delhi"],
+["Goa"],
+["Gujarat"],
+["Haryana"],
+["Himachal Pradesh"],
+["Jammu and Kashmir"],
+["Jharkhand"],
+["Karnataka"],
+["Kerala"],
+["Lakshadweep Islands"],
+["Madhya Pradesh"],
+["Maharashtra"],
+["Manipur"],
+["Meghalaya"],
+["Mizoram"],
+["Nagaland"],
+["Odisha"],
+["Pondicherry"],
+["Punjab"],
+["Rajasthan"],
+["Sikkim"],
+["Tamil Nadu"],
+["Telangana"],
+["Tripura"],
+["Uttar Pradesh"],
+["Uttarakhand"],
+["West Bengal"]
+                          ],class: 'form-control STATE',)) %>
+
                       </div>
 
                       <div class="form-group">
-                        <%= form.text_field :CONSIGNEE_STATE_CODE, id: :sale_CONSIGNEE_STATE_CODE, class: 'form-control', placeholder: 'ONSIGNEE STATE CODE'  %>
+                        <%= form.text_field :CONSIGNEE_STATE_CODE, id: :sale_CONSIGNEE_STATE_CODE,disabled: true, class: 'form-control', placeholder: 'ONSIGNEE STATE CODE'  %>
                       </div>
 
                       <div class="form-group">
@@ -142,7 +259,7 @@
                         <%= form.text_field :comment, id: :purchase_comment, class: 'form-control'  %>
                       </div>
 
-                      <h2 class="mbr-section-title display-3 text-xs-center">Add Export</h2>
+                      <h2 class="mbr-section-title display-3 text-xs-center">Add Invoice Details</h2>
                        <%= form.fields_for :exportsales do |f| %>
                       <div class="form-group">
                         <%= f.text_field :NAME_OF_GOODS_SERVICES, class: 'form-control', placeholder: 'NAME OF GOODS SERVICES'  %>
@@ -197,7 +314,7 @@
                       </div>
                       <h4><u><%= f.link_to_remove "Remove this export" %></u></h4>
                     <% end %>
-                    <h4><u><%= form.link_to_add "Add a export", :exportsales %></u></h4>
+                    <h4><u><%= form.link_to_add "Add Invoice Details", :exportsales %></u></h4>
                       <br/>
                       <h4>
                         <%= form.file_field :photo %>
@@ -222,27 +339,74 @@
       $("#sale_exportsales_attributes_"+id+"_AMOUNT").val(rate*qty);
     });
 
+    $(document).on("change", "#sale_STATE,#sale_BUYER_STATE,#sale_CONSIGNEE_STATE" , function() {
+      var obj = {
+      "Andaman and Nicobar Islands": 35,
+      "Andhra Pradesh": 28,
+      "Telagana": 37,
+      "Arunachal Pradesh": 12,
+      "Assam": 18,
+      "Bihar": 10,
+      "Chandigarh": 04,
+      "Chattisgarh": 22,
+      "Dadra and Nagar Haveli": 26,
+      "Daman and Diu": 25,
+      "Delhi": 07,
+      "Goa": 30,
+      "Gujarat": 24,
+      "Haryana": 06,
+      "Himachal Pradesh": 02,
+      "Jammu and Kashmir": 01,
+      "Jharkhand": 20,
+      "Karnataka": 29,
+      "Kerala": 32,
+      "Lakshadweep Islands": 31,
+      "Madhya Pradesh": 23,
+      "Maharashtra": 27,
+      "Manipur": 14,
+      "Meghalaya": 17,
+      "Mizoram": 15,
+      "Nagaland": 13,
+      "Odisha": 21,
+      "Pondicherry": 34,
+      "Punjab": 03,
+      "Rajasthan": 08,
+      "Sikkim": 11,
+      "Tamil Nadu": 33,
+      "Telangana": 36,
+      "Tripura": 16,
+      "Uttar Pradesh": 09,
+      "Uttarakhand": 05,
+      "West Bengal": 19
+      };
+      id = $(this).attr('id') + "_CODE";
+      state = $(this).val();
+      $("#"+id).val(obj[state]);
+    });
+
     $(document).on("focusout", ".CGST" , function() {
       id = $(this).attr('id').split("_")[3];
       gst = $(this).val();
+      less = $("#sale_exportsales_attributes_"+id+"_LESS_DISCOUNT_ABATEMENT").val();
       amount  = $("#sale_exportsales_attributes_"+id+"_AMOUNT").val();
-      $("#sale_exportsales_attributes_"+id+"_CGST_AMT").val(gst*amount/100);
+      $("#sale_exportsales_attributes_"+id+"_CGST_AMT").val(gst*(amount-less)/100);
     });
 
     $(document).on("focusout", ".SGST" , function() {
       id = $(this).attr('id').split("_")[3];
       gst = $(this).val();
+      less = $("#sale_exportsales_attributes_"+id+"_LESS_DISCOUNT_ABATEMENT").val();
       amount  = $("#sale_exportsales_attributes_"+id+"_AMOUNT").val();
-      $("#sale_exportsales_attributes_"+id+"_SGST_AMT").val(gst*amount/100);
+      $("#sale_exportsales_attributes_"+id+"_SGST_AMT").val(gst*(amount-less)/100);
     });
 
     $(document).on("focusout", ".IGST" , function() {
       id = $(this).attr('id').split("_")[3];
       gst = $(this).val();
       amount  = $("#sale_exportsales_attributes_"+id+"_AMOUNT").val();
-      $("#sale_exportsales_attributes_"+id+"_IGST_AMT").val(gst*amount/100);
-
-      $("#sale_exportsales_attributes_"+id+"_TOTAL_AMOUNT").val(parseInt(amount)+parseInt($("#sale_exportsales_attributes_"+id+"_CGST_AMT").val())+parseInt($("#sale_exportsales_attributes_"+id+"_SGST_AMT").val())+parseInt($("#sale_exportsales_attributes_"+id+"_IGST_AMT").val()));
+      less = $("#sale_exportsales_attributes_"+id+"_LESS_DISCOUNT_ABATEMENT").val();
+      $("#sale_exportsales_attributes_"+id+"_IGST_AMT").val(gst*(amount-less)/100);
+      $("#sale_exportsales_attributes_"+id+"_TOTAL_AMOUNT").val(parseInt(amount)-parseInt(less)+parseInt($("#sale_exportsales_attributes_"+id+"_CGST_AMT").val())+parseInt($("#sale_exportsales_attributes_"+id+"_SGST_AMT").val())+parseInt($("#sale_exportsales_attributes_"+id+"_IGST_AMT").val()));
     });
 
      $(document).on("focusout", ".buyergst" , function() {

@@ -1,19 +1,18 @@
-<br/><br/> <br/><br/> <br/><br/>
+<br/>
 
-<section class="mbr-section mbr-section-small" id="form1-8" data-rv-view="8" style="background-color: rgb(251, 242, 190); padding-top: 6rem; padding-bottom: 6rem;">
+
     
     <div class="container">
         <div class="row">
-            <div class="col-sm-8 col-sm-offset-2" data-form-type="formoid">
+            
 
 <p id="notice"><%= notice %></p>
 
-<%= image_tag @purchase.photo.url %>
+<%= image_tag(@purchase.photo.url,:size => "1000x500") %>
 
-<%= link_to 'Edit', edit_purchase_path(@purchase) %> |
-<%= link_to 'Back', purchases_path %>
-
-            </div>
+       
         </div>
+        <%= link_to 'Edit', edit_purchase_path(@purchase) %> |
+<%= link_to 'Back', purchases_path %>
     </div>
-</section>
+
