@@ -1,7 +1,7 @@
 class SalesController < ApplicationController
   before_action :set_sale, only: [:show, :edit, :update, :destroy,:download]
   require 'rubyXL'
-  require 'numbers_in_words'
+  require 'to_words'
   # GET /sales
   # GET /sales.json
   def index
@@ -47,8 +47,8 @@ class SalesController < ApplicationController
     sheet[10][4].change_contents(@sale.REVERSE_CHARGE)
     sheet[17][1].change_contents(@sale.BUYER_GSTIN_UIN)
     sheet[17][6].change_contents(@sale.BUYER_CIN)
-    sheet[11][0].change_contents(@sale.BUYER_NAME + ", "+ @sale.BUYER_ADDRESS)
-    sheet[11][5].change_contents(@sale.CONSIGNEE_NAME + ", "+ @sale.CONSIGNEE_ADDRESS)
+    sheet[11][0].change_contents("Bill To: " + @sale.BUYER_NAME + ", "+ @sale.BUYER_ADDRESS)
+    sheet[11][5].change_contents("Place of Supply: " + @sale.CONSIGNEE_NAME + ", "+ @sale.CONSIGNEE_ADDRESS)
     sheet[16][6].change_contents(@sale.VEHICLE_NO)
     sheet[6][6].change_contents(current_user.landline)
     sheet[7][6].change_contents(current_user.phone)
@@ -65,10 +65,10 @@ class SalesController < ApplicationController
     @sale.exportsales.each do |e|
       sheet[export_sheet_no][0].change_contents(e.NAME_OF_GOODS_SERVICES + " ("+ e.remark + ")")
       sheet[export_sheet_no][4].change_contents(e.HSNC_ACS)
-      sheet[export_sheet_no][5].change_contents(e.QTY)
-      sheet[export_sheet_no][6].change_contents(e.gstper)
-      sheet[export_sheet_no][7].change_contents(e.RATE_P_U)
-      sheet[export_sheet_no][8].change_contents(e.AMOUNT)
+      sheet[export_sheet_no][5].change_contents(number_with_precision(e.QTY,precision: 2))
+      sheet[export_sheet_no][6].change_contents(number_with_precision(e.gstper, precision:2))
+      sheet[export_sheet_no][7].change_contents(number_with_precision(e.RATE_P_U, precision:2))
+      sheet[export_sheet_no][8].change_contents(number_with_precision(e.AMOUNT, precision:2))
       total_amount = total_amount + e.AMOUNT.to_i
       total_discount = total_discount + e.LESS_DISCOUNT_ABATEMENT.to_i
       total_SGST = total_SGST + e.SGST_AMT.to_i
@@ -78,13 +78,13 @@ class SalesController < ApplicationController
       export_sheet_no = export_sheet_no + 1
     end
     sheet[44][6].change_contents("For "+current_user.company)
-    sheet[38][8].change_contents(total_amount)
-    sheet[39][8].change_contents(total_discount)
-    sheet[40][8].change_contents(total_SGST)
-    sheet[41][8].change_contents(total_CGST)
-    sheet[42][8].change_contents(total_IGST)
-    sheet[43][8].change_contents(grand_total)
-    sheet[41][0].change_contents(NumbersInWords.in_words(grand_total))
+    sheet[38][8].change_contents(number_with_precision(total_amount,precision: 2))
+    sheet[39][8].change_contents(number_with_precision(total_discount,precision: 2))
+    sheet[40][8].change_contents(number_with_precision(total_SGST, precision:2))
+    sheet[41][8].change_contents(number_with_precision(total_CGST,precision: 2))
+    sheet[42][8].change_contents(number_with_precision(total_IGST,precision: 2))
+    sheet[43][8].change_contents(number_with_precision(grand_total,precision:2))
+    sheet[41][0].change_contents(grand_total.to_words)
 
     book.save "#{Rails.root}/public/Report.xlsx"
     send_file "#{Rails.root}/public/Report.xlsx"
