@@ -1,8 +1,7 @@
 class PurchasesController < ApplicationController
   before_action :set_purchase, only: [:show, :edit, :update, :destroy,:download]
   require 'rubyXL'
-  require 'numbers_in_words'
-
+  require 'to_words'
   # GET /purchases
   # GET /purchases.json
   def index
@@ -62,7 +61,7 @@ class PurchasesController < ApplicationController
     sheet[42][8].change_contents(total_IGST)
     grand_total = total_amount - total_discount + total_SGST + total_CGST +total_IGST
     sheet[43][8].change_contents(grand_total)
-    sheet[41][0].change_contents(NumbersInWords.in_words(grand_total))
+    sheet[41][0].change_contents(grand_total.to_words)
     book.save "#{Rails.root}/public/Report.xlsx"
     send_file "#{Rails.root}/public/Report.xlsx"
   end
