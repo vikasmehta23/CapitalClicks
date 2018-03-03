@@ -8,11 +8,32 @@
 
 <p id="notice"><%= notice %></p>
 
-<%= image_tag(@purchase.photo.url,:size => "1000x500") %>
+<%= image_tag(@purchase.photo.url,:size => "1000x500",id: :stuff) %>
 
        
         </div>
-        <%= link_to 'Edit', edit_purchase_path(@purchase) %> |
+<br/><br/><br/>
+<button type="button" id="ZoomIn">Zoom-In</button>
+<button type="button" id="ZoomOut">Zoom-Out</button>
+
+<%= link_to 'Edit', edit_purchase_path(@purchase) %> |
 <%= link_to 'Back', purchases_path %>
     </div>
 
+
+
+<script>
+    var currentZoom = 1.0;
+    $(document).ready(function () {
+        //Zoom in on mouse click
+        $('#ZoomIn').click(
+            function () {
+                $('#stuff').animate({ 'zoom': currentZoom += .1 }, 'slow');
+            })
+        //Zoom out on mouse click   
+        $('#ZoomOut').click(
+            function () {
+                $('#stuff').animate({ 'zoom': currentZoom -= .1 }, 'slow');
+            })
+    });
+</script>
