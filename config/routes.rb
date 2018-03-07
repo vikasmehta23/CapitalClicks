@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get 'users/new'
   get "sales/buyergst" => "sales#buyergst", :as => "buyergst_sale"
+	get "sales/downloadsummary" => "sales#downloadsummary", :as => "downloadsummary_sale"
+
   resources :sales
   root 'welcome#index'
 

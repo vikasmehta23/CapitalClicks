@@ -6,6 +6,35 @@ class SalesController < ApplicationController
   # GET /sales.json
   def index
     @sales = current_user.sales
+    @saleshasharray = Array.new
+    @sales.each do |sale|
+      saleshash = Hash.new
+      saleshash['id']=sale.id
+      saleshash['BUYER_GSTIN_UIN']=sale.BUYER_GSTIN_UIN
+      saleshash['INVOICE_NO']=sale.INVOICE_NO
+      saleshash['INVOICE_DATE']=sale.INVOICE_DATE.strftime("%d/%m/%Y")      
+      total_amount = 0
+      total_discount = 0
+      total_SGST = 0
+      total_CGST = 0
+      total_IGST = 0
+      sale.exportsales.each do |e|
+        total_amount = total_amount + e.AMOUNT.to_i
+        total_discount = total_discount + e.LESS_DISCOUNT_ABATEMENT.to_i
+        total_SGST = total_SGST + e.SGST_AMT.to_i
+        total_CGST = total_CGST + e.CGST_AMT.to_i
+        total_IGST = total_IGST + e.IGST_AMT.to_i
+      end
+
+      saleshash['total_amount']=total_amount
+      saleshash['PLACE_OF_SUPPLY']=sale.PLACE_OF_SUPPLY
+      saleshash['Tax_Amount']=total_amount-total_discount
+      saleshash['total_CGST']=total_CGST
+      saleshash['total_SGST']=total_SGST
+      saleshash['total_IGST']=total_IGST
+      saleshash['SaleObject']=sale
+      @saleshasharray.push saleshash
+    end
   end
 
   # GET /sales/1
@@ -89,6 +118,45 @@ class SalesController < ApplicationController
     book.save "#{Rails.root}/public/Report.xlsx"
     send_file "#{Rails.root}/public/Report.xlsx"
   end
+
+
+
+    def downloadsummary
+    book = RubyXL::Parser.parse("#{Rails.root}/public/SummarySample.xlsx")
+    sheet = book.worksheets[0]
+    @sales = current_user.sales
+    row_no = 1
+    @sales.each do |sale|
+      sheet.add_cell(row_no,0,sale.BUYER_GSTIN_UIN)
+      sheet.add_cell(row_no,1,sale.BUYER_NAME)
+      sheet.add_cell(row_no,2,sale.INVOICE_NO)
+      sheet.add_cell(row_no,3,sale.INVOICE_DATE.strftime("%d/%m/%Y"))
+      
+      total_amount = 0
+      total_discount = 0
+      total_SGST = 0
+      total_CGST = 0
+      total_IGST = 0
+      sale.exportsales.each do |e|
+        total_amount = total_amount + e.AMOUNT.to_i
+        total_discount = total_discount + e.LESS_DISCOUNT_ABATEMENT.to_i
+        total_SGST = total_SGST + e.SGST_AMT.to_i
+        total_CGST = total_CGST + e.CGST_AMT.to_i
+        total_IGST = total_IGST + e.IGST_AMT.to_i
+      end
+      sheet.add_cell(row_no,4,total_amount)
+      sheet.add_cell(row_no,5,sale.PLACE_OF_SUPPLY)
+      sheet.add_cell(row_no,6,total_amount-total_discount)
+      sheet.add_cell(row_no,7,total_CGST)
+      sheet.add_cell(row_no,8,total_SGST)
+      sheet.add_cell(row_no,9,total_IGST)
+      row_no = row_no + 1
+    end
+
+    book.save "#{Rails.root}/public/SummaryReport.xlsx"
+    send_file "#{Rails.root}/public/SummaryReport.xlsx"
+  end
+
 
 
   # POST /sales
