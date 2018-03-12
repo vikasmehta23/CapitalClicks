@@ -1,7 +1,6 @@
 class SalesController < ApplicationController
   before_action :set_sale, only: [:show, :edit, :update, :destroy,:download]
   require 'rubyXL'
-  require 'to_words'
   # GET /sales
   # GET /sales.json
   def index
@@ -113,7 +112,7 @@ class SalesController < ApplicationController
     sheet[41][8].change_contents(number_with_precision(total_CGST,precision: 2))
     sheet[42][8].change_contents(number_with_precision(total_IGST,precision: 2))
     sheet[43][8].change_contents(number_with_precision(grand_total,precision:2))
-    sheet[41][0].change_contents(grand_total.to_words)
+    sheet[41][0].change_contents(to_words(grand_total))
 
     book.save "#{Rails.root}/public/Report.xlsx"
     send_file "#{Rails.root}/public/Report.xlsx"
@@ -187,6 +186,68 @@ class SalesController < ApplicationController
       end
     end
   end
+
+  def to_words(num)
+  numbers_to_name = {
+      10000000 => "crore",
+      100000 => "lakh",
+      1000 => "thousand",
+      100 => "hundred",
+      90 => "ninety",
+      80 => "eighty",
+      70 => "seventy",
+      60 => "sixty",
+      50 => "fifty",
+      40 => "forty",
+      30 => "thirty",
+      20 => "twenty",
+      19=>"nineteen",
+      18=>"eighteen",
+      17=>"seventeen", 
+      16=>"sixteen",
+      15=>"fifteen",
+      14=>"fourteen",
+      13=>"thirteen",              
+      12=>"twelve",
+      11 => "eleven",
+      10 => "ten",
+      9 => "nine",
+      8 => "eight",
+      7 => "seven",
+      6 => "six",
+      5 => "five",
+      4 => "four",
+      3 => "three",
+      2 => "two",
+      1 => "one"
+    }
+
+  log_floors_to_ten_powers = {
+    0 => 1,
+    1 => 10,
+    2 => 100,
+    3 => 1000,
+    4 => 1000,
+    5 => 100000,
+    6 => 100000,
+    7 => 10000000
+  }
+
+  num = num.to_i
+  return '' if num <= 0 or num >= 100000000
+
+  log_floor = Math.log(num, 10).floor
+  ten_power = log_floors_to_ten_powers[log_floor]
+
+  if num <= 20
+    numbers_to_name[num]
+  elsif log_floor == 1
+    rem = num % 10
+    [ numbers_to_name[num - rem], to_words(rem) ].join(' ')
+  else
+    [ to_words(num / ten_power), numbers_to_name[ten_power], to_words(num % ten_power) ].join(' ')
+  end
+end
 
   # DELETE /sales/1
   # DELETE /sales/1.json
